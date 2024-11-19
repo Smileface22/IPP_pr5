@@ -1,0 +1,33 @@
+<div class="container mt-5 p-4 rounded shadow-lg bg-light">
+    <div>
+        <button mat-raised-button routerLink="contacts/add" >Добавить контакт</button>
+    </div>
+    <h2 class="text-center text-primary mb-4">Список контактов</h2>
+    <div class="d-flex justify-content-center">
+        <table class="table table-bordered table-hover table-striped w-75">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Имя</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Номер телефона</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (contact of contacts; track $index) {
+                    <tr class="align-middle">
+                        <td>{{ contact.name }}</td>
+                        <td>{{ contact.email }}</td>
+                        <td>{{ contact.phone }}</td>
+                        <td><button mat-raised-button color="accent" [routerLink]="'/contacts/' + contact._id">Редактировать</button></td>
+                        <td><button mat-raised-button color="warn" (click) = "deleteContact(contact._id!)">Удалить</button></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+

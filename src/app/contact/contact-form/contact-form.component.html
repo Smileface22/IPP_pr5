@@ -1,0 +1,23 @@
+<div>
+    @if (editContactId) {
+        <h2>Редактирование контакта</h2>
+    } @else {
+        <h2>Добавление нового контакта</h2>
+    }
+    <form [formGroup]="contactForm">
+        <mat-form-field class="w-full" >
+            <input type="text" matInput formControlName="name" placeholder="Имя"/>
+        </mat-form-field>
+        <mat-form-field class="w-full">
+            <input type="email" matInput formControlName="email" placeholder="Email"/>
+        </mat-form-field>
+        <mat-form-field class="w-full">
+            <input type="text" matInput formControlName="phone" placeholder="Номер телефона"/>
+        </mat-form-field>
+        @if (editContactId) {
+            <button mat-raised-button (click)="editContact()">Сохранить</button>
+        } @else {
+            <button mat-raised-button (click)="addUser()">Сохранить</button>
+        }
+    </form>
+</div>
